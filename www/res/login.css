@@ -1,0 +1,195 @@
+/**
+ * base.css and login.css merged from Specimen for this demo.
+ * Richard K. Szabó <richard@9eb.se>
+ * MIT 2015
+ */
+html, body {
+  margin      : 0;
+  padding     : 0;
+  height      : 100%;
+}
+
+html, body, p, span, div, table td, input, textarea {
+  font-family : "Lucida Grande", "Droid Sans", Arial, Helvetica, sans-serif;
+  font-size   : 14px;
+  line-height : 14px;
+  color       : #000;
+}
+
+/* Because of Twitter Bootstrap */
+p, div {
+  line-height: 17pt;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+}
+
+.clear { clear: both; }
+
+body {
+  background-color: #fafafa;
+}
+
+a, img, span, div {
+  border: 0;
+}
+
+div.page.container {
+  min-height: 1024px;
+}
+
+.content_padding {
+  height: 100px;
+}
+
+a {
+  text-decoration: underline;
+}
+
+ul {
+  padding: 0;
+}
+
+.hide {
+  display: none !important;
+}
+
+.height1 {
+  height: 1em;
+}
+
+.height2 {
+  height: 2em;
+}
+
+input.submit, .button {
+  /*background: url(/res/img/btnbg.jpg) left top no-repeat;*/
+  color: #fff;
+  border-color: #666 #333 #333 #333;
+  box-shadow: 0 0 0.6em rgba(255, 255, 255, 0.3) inset;
+  background-color: #000;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+}
+input.submit:hover, .button:hover,
+input.submit:active, .button:active {
+  /*background: url(/res/img/btnbghvr.jpg) left top no-repeat;*/
+  background-color: #333;
+  -webkit-transition: all 0.2s ease-in-out;
+     -moz-transition: all 0.2s ease-in-out;
+       -o-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+}
+
+input[disabled] {
+  opacity: 0.6;
+}
+
+input.submit[disabled], .button[disabled] {
+  background-color: #000;
+}
+
+#site-login.container {
+  padding: 0;
+}
+
+#site-login .controls {
+  padding: 5px;
+}
+
+#site-login .controls {
+  padding: 5px;
+}
+
+#site-login .controls input {
+  font-size: 2em;
+  /*height: 2.4em;*/
+  height: 65px;
+}
+
+#site-login .disc {
+  line-height: 20px;
+  padding: 5px;
+  text-align: left;
+}
+
+#site-login #form_elems label {
+  color: #333;
+  width: 100%;
+}
+
+#site-login #form_elems input[type=password] {
+  width: 100%;
+}
+
+#site-login #form_elems #d-cpt label {
+  display: block;
+}
+
+#site-login #form_elems #d-cpt input {
+  width: 56%;
+  float: left;
+  display: block;
+}
+
+#site-login #form_elems #d-cpt img {
+  float: right;
+  display: block;
+}
+
+#site-login #form_elems #login {
+  height    : 45px;
+  width     : 100%;
+  font-size : 16px;
+}
+
+#site-login #form-login #d-cpt #cptimg {
+  width: 140px;
+  height: 65px;
+}
+
+#site-login div#inf {
+  margin: 1em 0 1em 0;
+  color: #000;
+}
+
+#site-login input[type="text"],
+#site-login input[type="password"] {
+  border: 0;
+  background-color: #fff;
+  -webkit-box-shadow: inset 0 -6px 1px rgba(244, 244, 244, 1);
+  -moz-box-shadow: inset 0 -6px 1px rgba(244, 244, 244, 1);
+  box-shadow: inset 0 -6px 1px rgba(244, 244, 244, 1);
+  width: 100%;
+}
+
+#site-login input[type="text"]:active,
+#site-login input[type="text"]:focus,
+#site-login input[type="password"]:active,
+#site-login input[type="password"]:focus {
+  background-color: #fff;
+  -webkit-box-shadow: inset 0 -7px 1px rgba(83, 91, 143, 1),0 0 27px rgba(244, 244, 244, 1);
+  -moz-box-shadow: inset 0 -7px 1px rgba(83, 91, 143, 1),0 0 27px rgba(244, 244, 244, 1);
+  box-shadow: inset 0 -7px 1px rgba(83, 91, 143, 1),0 0 27px rgba(244, 244, 244, 1);
+}
+
+#site-login .disc_ok {
+  margin: 5px 0 0 0;
+}
+
+#site-login .disc_ok, #site-login .disc_ok input {
+  height: 1.5em;
+}
+
+#site-login .debug.code {
+  overflow: scroll;
+}
+
+
+@media (max-width: 979px) {
+  #site-login.container {
+    padding : 10pt;
+  }
+}
