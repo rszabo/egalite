@@ -193,42 +193,6 @@ class Session {
   }
 
   /**
-   * Return keys and values stored in a specific context.
-   * @param  string  $context       I.e. 'store'
-   */
-  static public function getContextKeys($context) {
-    if (!isset($_SESSION[$context])) return null;
-
-    $ret = array();
-    foreach($_SESSION[$context] as $key => $value) $ret[$key] = $value;
-    return $ret;
-  }
-
-  /**
-   * Set an entire block of data.
-   *
-   * @param  string  $context
-   * @param  array   $data
-   */
-  static public function setContextData($context, array $data) {
-    $_SESSION[$context] = $data;
-  }
-
-  /**
-   * Determine whether or not the Session is setup entirely with login.
-   *
-   * @param  Citizen $citizen     Match with the one registered.
-   * @return boolean
-   */
-  static public function isSaneAndLoggedIn(Citizen $citizen) {
-    $session = Session::getCurrent();
-    if (!$session)               return false;
-    if (!$session->getCitizen()) return false;
-
-    return $citizen->get('id') == $session->getCitizen()->get('id');
-  }
-
-  /**
    * Determine and return the name of the running script.
    */
   static public function getConsoleApp() {
@@ -237,16 +201,12 @@ class Session {
   }
 
   /**
-   * Empty cookies used by Specimen
+   * Empty cookies used by this demo.
    */
   static public function clearCookies() {
     self::setCookie(session_name(), null);
     self::setCookie('key_t', null);
     self::setCookie('key_s', null);
-    self::setCookie('state', null);
-    self::setCookie('contactlist', null);
-    self::setCookie('instancetag', null);
-    self::setCookie('fingerprint', null);
   }
 
   /**
@@ -311,7 +271,7 @@ class Session {
     // Send Storage key if not already delivered
     // In the future this particular setup should be for a sane env rather
     // than storage key as that too will only be delivered once logged in.
-    $this->sendStorageKeyIfCrapMethod();
+    $this->sendStorageKeyFailsafe();
 
     if (!Session_Request::isConsole()) {
       session_set_cookie_params($this->expire_session, "/");
@@ -338,12 +298,12 @@ class Session {
    *
    * @return boolean
    */
-    public function sendStorageKeyIfCrapMethod() {
+    public function sendStorageKeyFailsafe() {
     try {
       $whatever = self::getStorageKey();
     }
     catch (Exception $e) {
-      self::sendStorageKey();
+      self::sendStorageKeyCookie();
       if (!$this->isLoggedIn()) {
         header("Location: index.php");
         exit;
@@ -355,7 +315,7 @@ class Session {
   /**
    * Send storage key in the form of a cookie to the client.
    */
-  static public function sendStorageKey() {
+  static public function sendStorageKeyCookie() {
     Session::setCookie(self::STORAGE_KEY, Session_StorageKey::generate());
   }
 
